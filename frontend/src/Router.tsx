@@ -8,6 +8,7 @@ import SignupPage from "./pages/auth/SignupPage"
 import LandingPage from "./pages/auth/LandingPage"
 import DiseasePage from "./pages/auth/DiseasePage"
 import PostPage from "./pages/community/PostPage"
+import ClinicalTrial from "./components/home/ClinicalTrial"
 
 import NewsDetail from "./pages/home/NewsDetail"
 import DiseaseInformationDetail from "./pages/home/DiseaseInformationDetail"
@@ -31,6 +32,7 @@ export default function Router() {
         <Route path="/disease/:id" element={<DiseaseInformationDetail />} />
         <Route path="/benefit/:id" element={<BenefitDetail />} />
         <Route path="/doctors/:id" element={<HospitalDoctorsDetail />} />
+        <Route path="/clinical" element={<ClinicalTrial />} />
       </Routes>
     </BrowserRouter>
   )
