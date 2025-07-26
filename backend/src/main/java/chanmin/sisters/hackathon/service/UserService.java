@@ -1,6 +1,8 @@
 package chanmin.sisters.hackathon.service;
 
+import chanmin.sisters.hackathon.entity.Disease;
 import chanmin.sisters.hackathon.entity.User;
+import chanmin.sisters.hackathon.repository.DiseaseRepository;
 import chanmin.sisters.hackathon.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -10,6 +12,7 @@ import org.springframework.stereotype.Service;
 public class UserService {
 
     private final UserRepository userRepository;
+    private final DiseaseService diseaseService;
 
     // 회원가입
     public User signup(String username) {
@@ -37,5 +40,13 @@ public class UserService {
     public User getInfobyUsername(String username) {
         return userRepository.findByUsername(username)
                 .orElseThrow(() -> new IllegalArgumentException("사용자 정보 없음"));
+    }
+
+    public User setUserDisease(Long userId, Long diseaseId) {
+        User user = getInfobyId(userId);
+        Disease disease = diseaseService.getDiseaseById(diseaseId);
+
+        user.setDisease(disease);
+        return userRepository.save(user);
     }
 }

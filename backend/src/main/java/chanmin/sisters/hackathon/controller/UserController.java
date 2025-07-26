@@ -27,4 +27,9 @@ public class UserController {
     public ResponseEntity<User> getInfo(@RequestParam String username){
         return ResponseEntity.ok(userService.getInfobyUsername(username));
     }
+
+    @PostMapping("/disease")
+    public ResponseEntity<User> setUserDisease(@RequestParam Long userId, @RequestParam Long diseaseId){
+        return ResponseEntity.ok(userService.setUserDisease(userId, diseaseId));
+    }
 }
