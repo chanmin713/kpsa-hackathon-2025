@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import BottomNavigation from "../../components/BottomNavigation";
 import ScrollView from "../../components/home/ScrollView";
-import SortDropdown from "../../components/home/SortDropdown";
 import AlertIcon from "../../assets/Icons/AlertIcon.svg";
 
 import News from "../../components/home/News";
@@ -35,13 +34,6 @@ function Home() {
                 <ScrollView activeTab={activeTab} setActiveTab={handleTabChange} />
             </div>
             <div className="mt-4 px-6">
-                <div className="flex justify-between items-center mb-3">
-                    <p>
-                        총 <span className="font-bold">55</span>건
-                    </p>
-                    <SortDropdown />
-                </div>
-
                 {activeTab === "뉴스" && <News />}
                 {activeTab === "질환 정보" && <DiseaseInformation />}
                 {activeTab === "지원금" && <Benefit />}
