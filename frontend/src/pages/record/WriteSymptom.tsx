@@ -2,7 +2,8 @@ import { useState } from "react"
 import { useNavigate } from "react-router-dom"
 import BackIcon from '../../assets/Icons/BackIcon.svg'
 import TextButton from "../../components/buttons/TextButton"
-
+import api from "../../apis/axios";
+import { useAuthStore } from "../../storages/useAuthStorage";
 
 const WriteSymptom = () => {
     const navigate = useNavigate()
@@ -10,6 +11,40 @@ const WriteSymptom = () => {
     const [time, setTime] = useState("")
     const [symptom, setSymptom] = useState("")
     const [memo, setMemo] = useState("")
+
+    const { user } = useAuthStore();
+
+    const handleSave = async () => {
+        if (!date || !time || !symptom || !memo) {
+            alert("모든 필드를 입력해 주세요.");
+            return;
+        }
+
+        if (!user) {
+            alert("로그인이 필요합니다.");
+            return;
+        }
+
+        const start_time = new Date(`${date} ${time}`).toISOString();
+
+        const requestBody = {
+            user,
+            start_time,
+            symptoms: symptom,
+            memo,
+        };
+
+        try {
+            await api.post("/sr", requestBody);
+            alert("저장되었습니다.");
+            navigate(-1);
+        } catch (err) {
+            console.error("저장 실패:", err);
+            alert("저장에 실패했습니다.");
+        }
+    };
+
+    const today = new Date().toISOString().split(" ")[0];
 
     return (
         <div className="flex flex-col h-screen">
@@ -24,6 +59,7 @@ const WriteSymptom = () => {
                         <input
                             type="date"
                             value={date}
+                            max={today}
                             onChange={(e) => setDate(e.target.value)}
                             className="border border-gray-300 rounded-lg px-4 py-2 text-gray-600"
                         />
@@ -60,9 +96,8 @@ const WriteSymptom = () => {
                 <TextButton
                     text="저장"
                     variant="primary"
-                    onClick={() => {
-                        // 저장 로직 작성
-                    }}
+                    onClick={handleSave}
+
                 />
             </div>
         </div>

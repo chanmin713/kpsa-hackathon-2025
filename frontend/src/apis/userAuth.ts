@@ -7,11 +7,11 @@ export const fetchUserByUsername = async (username: string): Promise<User> => {
 };
 
 export const signup = async (username: string): Promise<User> => {
-    const response = await api.get<User>(`/user/info?username=${username}`);
+    const response = await api.post<User>(`/user/signup?username=${username}`);
     return response.data;
 };
 
 export const login = async (username: string): Promise<User> => {
-    const response = await api.get<User>(`/user/info?username=${username}`);
+    const response = await api.post<User>(`/user/login?username=${username}`);
     return response.data;
 };
