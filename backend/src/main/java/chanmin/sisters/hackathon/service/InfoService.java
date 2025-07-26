@@ -31,9 +31,9 @@ public class InfoService {
         Info info = getInfoById(id);
         info.setTitle(updatedInfo.getTitle());
         info.setContent(updatedInfo.getContent());
-        info.setImage_url(updatedInfo.getImage_url());
-        info.setCompany(updatedInfo.getCompany());
-        info.setTime(updatedInfo.getTime());
+        info.setImg(updatedInfo.getImg());
+        info.setAuthor(updatedInfo.getAuthor());
+        info.setDate(updatedInfo.getDate());
         return infoRepository.save(info);
     }
 

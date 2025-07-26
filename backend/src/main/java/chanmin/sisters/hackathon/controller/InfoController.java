@@ -21,9 +21,9 @@ public class InfoController {
         return infoService.getAllInfo();
     }
 
-    @GetMapping("/{id}")
-    public ResponseEntity<Info> getInfoById(@PathVariable Long id) {
-        return ResponseEntity.ok(infoService.getInfoById(id));
+    @GetMapping("/{infoId}")
+    public ResponseEntity<Info> getInfoById(@PathVariable Long infoId) {
+        return ResponseEntity.ok(infoService.getInfoById(infoId));
     }
 
     @PostMapping
@@ -31,14 +31,14 @@ public class InfoController {
         return ResponseEntity.ok(infoService.createInfo(info));
     }
 
-    @PutMapping("/{id}")
-    public ResponseEntity<Info> updateInfo(@PathVariable Long id, @RequestBody Info updatedInfo) {
-        return ResponseEntity.ok(infoService.updateInfo(id, updatedInfo));
+    @PutMapping("/{infoId}")
+    public ResponseEntity<Info> updateInfo(@PathVariable Long infoId, @RequestBody Info updatedInfo) {
+        return ResponseEntity.ok(infoService.updateInfo(infoId, updatedInfo));
     }
 
-    @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteInfo(@PathVariable Long id) {
-        infoService.deleteInfo(id);
+    @DeleteMapping("/{infoId}")
+    public ResponseEntity<Void> deleteInfo(@PathVariable Long infoId) {
+        infoService.deleteInfo(infoId);
         return ResponseEntity.noContent().build();
     }
 }

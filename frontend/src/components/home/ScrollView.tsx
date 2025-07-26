@@ -5,7 +5,7 @@ function ScrollView(props: {
     setActiveTab: (tab: string) => void
 }) {
     const { activeTab, setActiveTab } = props
-    const tabs = ['뉴스', '질환 정보', '지원금', '임상시험', '병원/의료진  ']
+    const tabs = ['뉴스', '질환 정보', '지원금', '임상시험', '병원/의료진']
 
     return (
         <div style={{ display: 'flex', height: '35px', gap: '5px' }}>

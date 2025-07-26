@@ -30,10 +30,10 @@ public class NewsService {
         News news = getNewsById(id);
         news.setTitle(updatedNews.getTitle());
         news.setContent(updatedNews.getContent());
-        news.setImage_url(updatedNews.getImage_url());
+        news.setImg(updatedNews.getImg());
         news.setCompany(updatedNews.getCompany());
-        news.setReporter(updatedNews.getReporter());
-        news.setTime(updatedNews.getTime());
+        news.setAuthor(updatedNews.getAuthor());
+        news.setDate(updatedNews.getDate());
         return newsRepository.save(news);
     }
 

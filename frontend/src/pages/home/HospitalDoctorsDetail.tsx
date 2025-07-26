@@ -1,15 +1,15 @@
-import { useParams, useNavigate } from "react-router-dom";
-import { doctorsData } from "../../data/doctors";
+import { useParams, useNavigate } from "react-router-dom"
+import { doctorsData } from "../../data/doctors"
 import BackIcon from '../../assets/Icons/BackIcon.svg'
 
 const HospitalDoctorsDetail = () => {
-    const { id } = useParams();
-    const navigate = useNavigate();
+    const { id } = useParams()
+    const navigate = useNavigate()
 
     const index = Number(id);
-    const item = doctorsData[index];
+    const item = doctorsData[index]
 
-    if (!item) return <div className="p-6">병원 정보를 찾을 수 없습니다.</div>;
+    if (!item) return <div className="p-6">병원 정보를 찾을 수 없습니다.</div>
 
     return (
         <div>
@@ -19,7 +19,7 @@ const HospitalDoctorsDetail = () => {
             <img src={item.profile} className="mb-6" />
             <div className="flex px-6">{item.content}</div>
         </div>
-    );
+    )
 }
 
 export default HospitalDoctorsDetail

@@ -9,23 +9,19 @@ import java.time.LocalDateTime;
 @Entity
 @Setter
 @Getter
-@Table(name = "board")
-public class Board {
+@Table(name = "hospitalrecord")
+public class HospitalRecord {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long board_id;
+    private Long hr_id;
 
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;
 
-    @Enumerated(EnumType.STRING)
-    private Category category;
-
-    private String title;
-    private String content;
-    private LocalDateTime dateTime;
-
-
+    private LocalDateTime datetime;
+    private String location;
+    private String symptom;
+    private String memo;
 }

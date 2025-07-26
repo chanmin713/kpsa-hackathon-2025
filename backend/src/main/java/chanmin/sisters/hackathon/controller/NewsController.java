@@ -20,9 +20,9 @@ public class NewsController {
         return newsService.getAllNews();
     }
 
-    @GetMapping("/{id}")
-    public ResponseEntity<News> getNewsById(@PathVariable Long id) {
-        return ResponseEntity.ok(newsService.getNewsById(id));
+    @GetMapping("/{newsId}")
+    public ResponseEntity<News> getNewsById(@PathVariable Long newsId) {
+        return ResponseEntity.ok(newsService.getNewsById(newsId));
     }
 
     @PostMapping
@@ -30,14 +30,14 @@ public class NewsController {
         return ResponseEntity.ok(newsService.createNews(news));
     }
 
-    @PutMapping("/{id}")
-    public ResponseEntity<News> updateNews(@PathVariable Long id, @RequestBody News updatedNews) {
-        return ResponseEntity.ok(newsService.updateNews(id, updatedNews));
+    @PutMapping("/{newsId}")
+    public ResponseEntity<News> updateNews(@PathVariable Long newsId, @RequestBody News updatedNews) {
+        return ResponseEntity.ok(newsService.updateNews(newsId, updatedNews));
     }
 
-    @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteNews(@PathVariable Long id) {
-        newsService.deleteNews(id);
+    @DeleteMapping("/{newsId}")
+    public ResponseEntity<Void> deleteNews(@PathVariable Long newsId) {
+        newsService.deleteNews(newsId);
         return ResponseEntity.noContent().build();
     }
 }

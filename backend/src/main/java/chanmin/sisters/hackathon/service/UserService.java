@@ -28,8 +28,13 @@ public class UserService {
                 .orElseThrow(() -> new IllegalArgumentException("사용자를 찾을 수 없습니다."));
     }
 
+    public User getInfobyId(Long id) {
+        return userRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("사용자 정보 없음"));
+    }
+
     // 사용자 정보 조회
-    public User getInfo(String username) {
+    public User getInfobyUsername(String username) {
         return userRepository.findByUsername(username)
                 .orElseThrow(() -> new IllegalArgumentException("사용자 정보 없음"));
     }
