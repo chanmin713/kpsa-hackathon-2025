@@ -10,7 +10,7 @@ const WriteMedicine = () => {
     const [time, setTime] = useState("")
     const [hospital, setHospital] = useState("")
     const [memo, setMemo] = useState("")
-    const today = new Date().toISOString().split("T")[0];
+    const today = new Date().toISOString().split(" ")[0];
 
     const [medicines, setMedicines] = useState([
         { name: "타이레놀", schedule: "매일 식후 30분" },

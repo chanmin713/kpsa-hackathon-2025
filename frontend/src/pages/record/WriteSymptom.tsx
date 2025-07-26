@@ -25,17 +25,17 @@ const WriteSymptom = () => {
             return;
         }
 
-        const start_time = new Date(`${date}T${time}`).toISOString();
+        const start_time = new Date(`${date} ${time}`).toISOString();
 
         const requestBody = {
             user,
             start_time,
-            symptom: symptom,
+            symptoms: symptom,
             memo,
         };
 
         try {
-            await api.post("/hr", requestBody);
+            await api.post("/sr", requestBody);
             alert("저장되었습니다.");
             navigate(-1);
         } catch (err) {
@@ -44,7 +44,7 @@ const WriteSymptom = () => {
         }
     };
 
-    const today = new Date().toISOString().split("T")[0];
+    const today = new Date().toISOString().split(" ")[0];
 
     return (
         <div className="flex flex-col h-screen">

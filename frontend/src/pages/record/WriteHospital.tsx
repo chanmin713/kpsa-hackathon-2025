@@ -13,7 +13,7 @@ const WriteHospital = () => {
     const [diagnosis, setDiagnosis] = useState("");
     const [memo, setMemo] = useState("");
 
-    const today = new Date().toISOString().split("T")[0];
+    const today = new Date().toISOString().split(" ")[0];
 
     const { user } = useAuthStore();
 
@@ -28,7 +28,7 @@ const WriteHospital = () => {
             return;
         }
 
-        const datetime = new Date(`${date}T${time}`).toISOString();
+        const datetime = new Date(`${date} ${time}`).toISOString();
 
         const requestBody = {
             user,
