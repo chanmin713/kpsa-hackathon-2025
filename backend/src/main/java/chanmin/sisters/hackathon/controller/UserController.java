@@ -25,6 +25,6 @@ public class UserController {
 
     @GetMapping("/info")
     public ResponseEntity<User> getInfo(@RequestParam String username){
-        return ResponseEntity.ok(userService.getInfo(username));
+        return ResponseEntity.ok(userService.getInfobyUsername(username));
     }
 }
