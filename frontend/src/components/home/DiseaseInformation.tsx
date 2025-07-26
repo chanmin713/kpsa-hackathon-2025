@@ -10,7 +10,11 @@ const DiseaseInformation = () => {
         <div key={idx} className="flex justify-between items-start py-3 border-b border-gray-200"
           onClick={() => navigate(`/disease/${idx}`)}>
           <div className="flex-1">
-            <div className="text-base font-bold leading-snug">{item.title}</div>
+            <div className="text-base font-bold leading-snug">
+              {item.title.length > 50
+                ? item.title.slice(0, 50) + "..."
+                : item.title}
+            </div>
             <div className="text-base mt-1">
               {item.content.length > 55
                 ? item.content.slice(0, 55) + "..."
@@ -20,7 +24,8 @@ const DiseaseInformation = () => {
               {item.author} &nbsp;&nbsp; {item.date}
             </div>
           </div>
-          <div className="w-[60px] h-[60px] bg-gray-300 rounded-lg ml-3 flex-shrink-0" />
+          <img src={item.img} className="w-[80px] h-[80px] rounded-lg object-cover" />
+
         </div>
       ))}
     </div>

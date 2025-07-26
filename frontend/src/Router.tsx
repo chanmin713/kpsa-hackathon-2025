@@ -12,6 +12,7 @@ import PostPage from "./pages/community/PostPage"
 import NewsDetail from "./pages/home/NewsDetail"
 import DiseaseInformationDetail from "./pages/home/DiseaseInformationDetail"
 import BenefitDetail from "./pages/home/BenefitDetail"
+import HospitalDoctorsDetail from "./pages/home/HospitalDoctorsDetail"
 
 export default function Router() {
   return (
@@ -29,6 +30,7 @@ export default function Router() {
         <Route path="/news/:id" element={<NewsDetail />} />
         <Route path="/disease/:id" element={<DiseaseInformationDetail />} />
         <Route path="/benefit/:id" element={<BenefitDetail />} />
+        <Route path="/doctors/:id" element={<HospitalDoctorsDetail />} />
       </Routes>
     </BrowserRouter>
   )
