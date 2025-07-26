@@ -18,7 +18,10 @@ public class Info {
 
     private String img;
     private String title;
+
+    @Column(columnDefinition = "TEXT") // 긴 본문 내용
     private String content;
+
     private String author;
     private LocalDateTime date;
 }

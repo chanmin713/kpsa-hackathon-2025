@@ -29,6 +29,8 @@ public class MedicationRecord {
 
     private LocalDateTime mr_time; // 처방 일시
     private String mr_hospital; // 처방 병원
+
+    @Column(columnDefinition = "TEXT") // 긴 본문 내용
     private String memo;
 
 

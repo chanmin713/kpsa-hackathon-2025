@@ -9,21 +9,18 @@ import java.time.LocalDateTime;
 @Entity
 @Setter
 @Getter
-@Table(name = "hospitalrecord")
-public class HospitalRecord {
+@Table(name = "doctors")
+public class Doctors {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long hr_id;
+    private Long doctor_id;
 
-    @ManyToOne
-    @JoinColumn(name = "user_id")
-    private User user;
-
-    private LocalDateTime datetime;
-    private String location;
-    private String symptom;
+    private String img;
+    private String title;
 
     @Column(columnDefinition = "TEXT") // 긴 본문 내용
-    private String memo;
+    private String content;
+
+    private String hospital;
 }

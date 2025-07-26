@@ -7,15 +7,16 @@ import lombok.Setter;
 @Entity
 @Setter
 @Getter
-@Table(name = "medication")
-public class Medication {
+@Table(name = "benefit")
+public class Benefit {
+
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long medi_id;
+    private Long benefit_id;
 
-    private String name;
-
-    @Column(columnDefinition = "TEXT") // 긴 본문 내용
-    private String explaination;
+    private String title;
+    private String boundary;
+    private String disease;
+    private String place;
 }

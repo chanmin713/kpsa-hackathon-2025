@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Entity
@@ -18,8 +19,11 @@ public class News {
 
     private String img;
     private String title;
+
+    @Column(columnDefinition = "TEXT") // 긴 본문 내용
     private String content;
+
     private String company;
     private String author;
-    private LocalDateTime date;
+    private LocalDate date;
 }

@@ -24,6 +24,8 @@ public class Comment {
     @JoinColumn(name = "board_id")
     private Board board;
 
+    @Column(columnDefinition = "TEXT") // 긴 본문 내용
     private String content;
+
     private LocalDateTime dateTime;
 }

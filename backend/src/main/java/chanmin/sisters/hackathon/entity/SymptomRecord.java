@@ -22,5 +22,7 @@ public class SymptomRecord {
 
     private LocalDateTime start_time;
     private String symptoms; // 콤마(,)로 구분
+
+    @Column(columnDefinition = "TEXT") // 긴 본문 내용
     private String memo;
 }

@@ -24,7 +24,10 @@ public class Board {
     private Category category;
 
     private String title;
+
+    @Column(columnDefinition = "TEXT") // 긴 본문 내용
     private String content;
+
     private LocalDateTime dateTime;
 
 
