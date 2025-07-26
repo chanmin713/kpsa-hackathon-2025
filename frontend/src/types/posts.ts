@@ -10,3 +10,10 @@ export type PostInfo = {
   isReplied: boolean;
   isLiked: boolean; 
 }
+
+export type CommentInfo = {
+  boardId: number;
+  commentId: number;
+  content: string;
+  user: User;
+}

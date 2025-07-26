@@ -1,5 +1,5 @@
 // import { useNavigate } from "react-router-dom";
-import type { PostInfo } from "../../types/posts";
+import type { PostInfo } from "../../../types/posts";
 import Post from "./Post";
 
 export interface PostListProps {

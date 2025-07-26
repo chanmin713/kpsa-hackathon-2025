@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
-import PostHeader from "./PostHeader";
+import PostProfile from "./PostHeader";
 import PostButton from "./PostButton";
-import type { PostInfo } from "../../types/posts";
+import type { PostInfo } from "../../../types/posts";
 import { Heart, MessageSquare } from "lucide-react";
 
 export interface PostProps {
@@ -21,16 +21,13 @@ function Post({
   return (
     <article
       onClick={goDetail}
-      className="w-full cursor-pointer border-b p-4 flex flex-col gap-3"
+      className="w-full cursor-pointer border-b py-4 flex flex-col gap-3"
     >
       <div className="whitespace-pre-wrap break-words text-text-large text-bold">{post.title}</div>
       <div className="whitespace-pre-wrap break-words line-clamp-2 text-primary">{post.content}</div>
 
       <div className="flex items-center justify-between pt-2">
-        {/* 왼쪽: 프로필 */}
-        <PostHeader user={post.user} />
-
-        {/* 오른쪽: 버튼 */}
+        <PostProfile user={post.user} />
         <div className="flex items-center gap-2">
           <PostButton
             icon={<MessageSquare />}

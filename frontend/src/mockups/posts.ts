@@ -1,4 +1,4 @@
-import type { PostInfo } from "../types/posts";
+import type { CommentInfo, PostInfo } from "../types/posts";
 
 export const postList: PostInfo[] = [
   {
@@ -45,5 +45,75 @@ export const postList: PostInfo[] = [
     isReplied: false,
     isLiked: false,
     title: "흑"
+  },
+  {
+    boardId: 4,
+    user: {
+      userId: 4,
+      loginId: '소확행러',
+      diseaseId: 2,
+      coin: 500
+    },
+    content: "오늘은 편의점에서 1+1 커피를 샀어요.\n햇살 좋은 벤치에서 혼자 마시는 커피 한 잔, 이게 행복이죠.",
+    replies: 12,
+    likes: 84,
+    isReplied: true,
+    isLiked: true,
+    title: "작지만 확실한 행복"
+  },
+  {
+    boardId: 5,
+    user: {
+      userId: 5,
+      loginId: '아기상어엄마',
+      diseaseId: 3,
+      coin: 200
+    },
+    content: "아기가 요즘 아기상어 노래에 빠졌어요~\n하루 종일 '뚜루루뚜루~' 흥얼대는 모습이 너무 귀여워요ㅎㅎ",
+    replies: 45,
+    likes: 152,
+    isReplied: true,
+    isLiked: false,
+    title: "아기상어 중독!"
+  },
+  {
+    boardId: 6,
+    user: {
+      userId: 6,
+      loginId: '은근한행복',
+      diseaseId: 1,
+      coin: 800
+    },
+    content: "비 오는 날 창문 열어두고 듣는 빗소리에 차 한 잔.\n그냥 그게 참 좋네요.",
+    replies: 9,
+    likes: 61,
+    isReplied: false,
+    isLiked: true,
+    title: "빗소리와 차"
+  }
+];
+
+export const commentList: CommentInfo[] = [
+  {
+    boardId: 1,
+    commentId: 1,
+    content: "헐~~ 지존 짱이네요",
+    user: {
+      userId: 4,
+      loginId: '소확행러',
+      diseaseId: 2,
+      coin: 500
+    }
+  },
+  {
+    boardId: 2,
+    commentId: 2,
+    content: "기분 좋은 글이네요. 장미 한 송이 두고 갑니다. 총총\n@>----",
+    user: {
+      userId: 6,
+      loginId: '은근한행복',
+      diseaseId: 1,
+      coin: 800
+    }
   }
 ]

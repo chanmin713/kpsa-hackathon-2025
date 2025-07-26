@@ -20,7 +20,7 @@ export default function PostButton({
   return (
     <button
       onClick={onClick}
-      className="flex items-center gap-1 text-text-small"
+      className="flex items-center gap-2 text-text-small"
       style={{ color }}
       type="button"
     >
