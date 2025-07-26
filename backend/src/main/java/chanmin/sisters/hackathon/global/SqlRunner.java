@@ -23,6 +23,7 @@ public class SqlRunner implements CommandLineRunner {
         executeSqlFile("sql/info.sql");
         executeSqlFile("sql/news.sql");
         executeSqlFile("sql/disease.sql");
+        executeSqlFile("sql/medication.sql");
     }
 
     private void executeSqlFile(String path) throws Exception {
