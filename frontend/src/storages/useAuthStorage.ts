@@ -1,15 +1,14 @@
 import { create } from "zustand";
 import { createJSONStorage, persist } from "zustand/middleware";
-import type { User } from "../types/user";
+import type { Disease, User } from "../types/user";
 
 interface AuthState {
   user: User | null;
   setUser: (user: User) => void;
   logout: () => void;
 
-  diseaseId: number | null;
-  setDiseaseId: (id: number) => void;
-  removeDiseaseId: () => void;
+  disease: Disease | null;
+  setDisease: (disease: Disease) => void;
 }
 
 export const useAuthStore = create<AuthState>()(
@@ -19,9 +18,8 @@ export const useAuthStore = create<AuthState>()(
       setUser: (user) => set({ user }),
       logout: () => set({ user: null }),
 
-      diseaseId: null,
-      setDiseaseId: (id) => set({ diseaseId: id }),
-      removeDiseaseId: () => set({ diseaseId: null })
+      disease: null,
+      setDisease: (disease) => set({ disease }),
     }),
     {
       name: "auth-storage",

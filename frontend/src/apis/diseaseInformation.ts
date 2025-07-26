@@ -15,7 +15,7 @@ export const fetchDiseaseById = async (infoId: number): Promise<DiseaseInformati
     return response.data;
 };
 
-export const fetchDiseases = async (): Promise<Disease> => {
-    const response = await api.get<Disease>(`/diseases`);
+export const fetchDiseases = async (): Promise<Disease[]> => {
+    const response = await api.get<Disease[]>(`/diseases`);
     return response.data;
 }

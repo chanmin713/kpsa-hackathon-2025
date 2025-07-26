@@ -8,7 +8,7 @@ import { useAuthStore } from "../../storages/useAuthStorage";
 
 function SignupPage() {
   const navigate = useNavigate();
-  const { setUser } = useAuthStore();
+  const { setUser, disease } = useAuthStore();
   const [username, setUsername] = useState("");
 
   const onSignup = async () => {
@@ -16,6 +16,10 @@ function SignupPage() {
     setUser(user);
     navigate("/");
   };
+
+  const onSelectDisease = () => {
+    navigate("/signup/disease");
+  }
 
   const onLoginClick = () => navigate("/login");
 
@@ -34,6 +38,15 @@ function SignupPage() {
           value={username}
           onChange={(e) => setUsername(e.target.value)}
           className="w-full max-w-md p-3 mb-4 focus:outline-none border-b-2 border-gray-300 focus:border-main transition-colors"
+        />
+
+        <input
+          type="text"
+          placeholder="병명"
+          value={disease?.disease_name_kr}
+          readOnly
+          onClick={onSelectDisease}
+          className="w-full max-w-md p-3 mb-4 border-b-2 border-gray-300"
         />
       </div>
 

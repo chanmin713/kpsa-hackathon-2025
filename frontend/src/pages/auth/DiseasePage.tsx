@@ -1,15 +1,22 @@
+import DiseaseList from "../../components/auth/DiseaseList";
 import BackButton from "../../components/buttons/BackButton";
-import { useAuthStore } from "../../storages/useAuthStorage";
 
 function DiseasePage() {
-    const { setDiseaseId, removeDiseaseId } = useAuthStore();
-
-    return (
-        <>
-            <BackButton />
-            <p>질병 선택 페이지</p>
-        </>
-    )
+  return (
+    <>
+      <span className="fixed top-6 left-6">
+        <BackButton />
+      </span>
+      <div className="mt-20">
+        <div className="text-text-large text-bold mx-6 mb-4">
+          진단 받았거나<br/>
+          의심가는 질환을 알려주세요
+        </div>
+        <DiseaseList />
+      </div>
+      
+    </>
+  )
 }
 
 export default DiseasePage
