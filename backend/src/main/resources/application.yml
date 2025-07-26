@@ -10,8 +10,19 @@ spring:
     generate-ddl: true
     show-sql: true
     hibernate:
-      ddl-auto: create # ?? ??? validate #??? ???? create #???? update
+      ddl-auto: update
       dialect: org.hibernate.dialect.MySQLDialect
+
+  profiles:
+    active: secret
+
   application:
     name: hackeathon
+
+springdoc:
+  api-docs:
+    path: /api-docs
+  swagger-ui:
+    path: /swagger-ui.html
+
 

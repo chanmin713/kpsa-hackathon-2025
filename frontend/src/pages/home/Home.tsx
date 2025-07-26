@@ -31,9 +31,10 @@ function Home() {
                 <img src={AlertIcon} />
             </div>
 
-            <ScrollView activeTab={activeTab} setActiveTab={handleTabChange} />
-
-            <div className="mt-2 px-6">
+            <div className="mr-2">
+                <ScrollView activeTab={activeTab} setActiveTab={handleTabChange} />
+            </div>
+            <div className="mt-4 px-6">
                 <div className="flex justify-between items-center mb-3">
                     <p>
                         총 <span className="font-bold">55</span>건

@@ -13,12 +13,16 @@ const News = () => {
           onClick={() => navigate(`/news/${idx}`)}
         >
           <div className="flex-1">
-            <div className="text-base font-bold leading-snug">{item.title}</div>
+            <div className="text-base font-bold leading-snug">
+              {item.title.length > 50
+                ? item.title.slice(0, 50) + "..."
+                : item.title}
+            </div>
             <div className="text-sm text-gray-500 mt-1">
               {item.company} &nbsp;&nbsp; {item.date}
             </div>
           </div>
-          <div className="w-[60px] h-[60px] bg-gray-300 rounded-lg ml-3 flex-shrink-0" />
+          <img src={item.img} className="w-[80px] h-[80px] rounded-lg object-cover" />
         </div>
       ))}
     </div>
