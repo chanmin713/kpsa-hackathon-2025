@@ -19,10 +19,10 @@ function PostList({ postList }: PostListProps) {
     <section className="flex flex-col w-full">
       {postList.map((post) => (
         <Post
-          key={post.boardId}
+          key={post.board_id}
           post={post}
-          onReplyClick={() => onReplyClick(post.boardId)}
-          onLikeClick={() => onLikeClick(post.boardId)}
+          onReplyClick={() => onReplyClick(post.board_id)}
+          onLikeClick={() => onLikeClick(post.board_id)}
         />
       ))}
     </section>
