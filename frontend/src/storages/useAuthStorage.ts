@@ -8,7 +8,7 @@ interface AuthState {
   logout: () => void;
 
   disease: Disease | null;
-  setDisease: (disease: Disease) => void;
+  setDisease: (disease: Disease | null) => void;
 }
 
 export const useAuthStore = create<AuthState>()(

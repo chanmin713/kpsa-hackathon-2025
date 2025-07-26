@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import TextButton from "../../components/buttons/TextButton";
 import BackButton from "../../components/buttons/BackButton";
 import type { User } from "../../types/user";
@@ -8,8 +8,10 @@ import { useAuthStore } from "../../storages/useAuthStorage";
 
 function SignupPage() {
   const navigate = useNavigate();
-  const { setUser, disease } = useAuthStore();
+  const { setUser, disease, setDisease } = useAuthStore();
   const [username, setUsername] = useState("");
+
+  useMemo(() => setDisease(null), []);
 
   const onSignup = async () => {
     const user: User = await signup(username);
