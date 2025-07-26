@@ -2,7 +2,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import { diseaseData } from "../../data/diseaseInformation";
 import BackIcon from '../../assets/Icons/BackIcon.svg'
 
-const DiseaseInformationDetail = () => {
+const HospitalDoctorsDetail = () => {
     const { id } = useParams();
     const navigate = useNavigate();
 
@@ -27,4 +27,4 @@ const DiseaseInformationDetail = () => {
     );
 }
 
-export default DiseaseInformationDetail
+export default HospitalDoctorsDetail
