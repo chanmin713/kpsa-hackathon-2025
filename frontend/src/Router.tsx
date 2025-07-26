@@ -9,6 +9,7 @@ import LandingPage from "./pages/auth/LandingPage"
 import DiseasePage from "./pages/auth/DiseasePage"
 import PostPage from "./pages/community/PostPage"
 import ClinicalTrial from "./components/home/ClinicalTrial"
+import WriteRecord from "./pages/record/WriteRecord"
 
 import NewsDetail from "./pages/home/NewsDetail"
 import DiseaseInformationDetail from "./pages/home/DiseaseInformationDetail"
@@ -33,6 +34,7 @@ export default function Router() {
         <Route path="/benefit/:id" element={<BenefitDetail />} />
         <Route path="/doctors/:id" element={<HospitalDoctorsDetail />} />
         <Route path="/clinical" element={<ClinicalTrial />} />
+        <Route path="/write" element={<WriteRecord />} />
       </Routes>
     </BrowserRouter>
   )
