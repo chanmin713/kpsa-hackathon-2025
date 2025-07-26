@@ -1,0 +1,16 @@
+INSERT INTO disease (disease_id, disease_name_kr, disease_name_en) VALUES
+    (1, '크론병', 'Crohn’s disease of both small and large intestine'),
+    (2, '선천성 무거핵구성 혈소판감소증', 'Congenital amegakaryocytic thrombocytopenia'),
+    (3, '소아성 폴립증 증후군', 'Juvenile polyposis syndrome'),
+    (4, '쉰젤 기드온 증후군', 'Schinzel Giedion syndrome'),
+    (5, '신장 안결손 증후군', 'Renal coloboma syndrome'),
+    (6, '스크라반-디어도르프 증후군', 'Skraban-Deardorff syndrome'),
+    (7, '쉬프린첸-골드베르그 증후군', 'Shprintzen-Goldberg syndrome'),
+    (8, '선천성 중추성 무호흡증', 'Congenital central hypoventilation syndrome'),
+    (9, '선천성 당화장애', 'Congenital disorder of glycosylation'),
+    (10, '시클 증후군', 'Seckel syndrome'),
+    (11, '선천성 횡격막탈장', 'Congenital diaphragmatic hernia'),
+    (12, '삼각머리증', 'Trigonocephaly'),
+    (13, '수두증이 없는 이분천골', 'Sacral spina bifida without hydrocephalus'),
+    (14, '심내막탄력섬유증', 'Endocardial fibroelastosis'),
+    (15, '시트룰린혈증', 'Citrullinaemia');

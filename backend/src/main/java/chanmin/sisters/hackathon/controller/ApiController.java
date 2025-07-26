@@ -14,9 +14,16 @@ public class ApiController {
 
     // 의약품 임상시험 정보조회
     @GetMapping(value = "/medi-test", produces = MediaType.APPLICATION_JSON_VALUE)
-    public @ResponseBody String getMedicineRawJson(
+    public @ResponseBody String getDrugInfo1(
     ) {
-        return apiService.getMedicineData();
+        return apiService.MdcinClincTestInfoService02();
+    }
+
+    // 의약품개요정보(e약은요)
+    @GetMapping(value = "/medi-info", produces = MediaType.APPLICATION_JSON_VALUE)
+    public @ResponseBody String getDrugInfo2(
+    ) {
+        return apiService.DrbEasyDrugInfoService();
     }
 
 }
