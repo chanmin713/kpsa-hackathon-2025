@@ -15,7 +15,7 @@ export default function Router() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/community" element={<Community />} />
-        <Route path="/community/post" element={<PostPage />} />
+        <Route path="/community/post/:id" element={<PostPage />} />
         <Route path="/record" element={<Record />} />
         <Route path="/mypage" element={<MyPage />} />
         <Route path="/landing" element={<LandingPage />} />

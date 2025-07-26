@@ -99,6 +99,10 @@ body {
     letter-spacing: -0.02em;
   }
 
+  .text-bold {
+    font-weight: 700;
+  }
+
   /* 버튼 패딩 */
   .px-btn-px {
     padding-left: 24px;
