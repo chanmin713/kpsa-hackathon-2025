@@ -22,7 +22,7 @@ public class UserService {
         return userRepository.save(user);
     }
 
-    // 로그인 (단순히 존재 여부만 확인하는 예시)
+    // 로그인
     public User login(String username) {
         return userRepository.findByUsername(username)
                 .orElseThrow(() -> new IllegalArgumentException("사용자를 찾을 수 없습니다."));
