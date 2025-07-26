@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import { useMemo, useState } from "react";
+import { useState } from "react";
 import TextButton from "../../components/buttons/TextButton";
 import BackButton from "../../components/buttons/BackButton";
 import type { User } from "../../types/user";
@@ -11,11 +11,10 @@ function SignupPage() {
   const { setUser, disease, setDisease } = useAuthStore();
   const [username, setUsername] = useState("");
 
-  useMemo(() => setDisease(null), []);
-
   const onSignup = async () => {
     const user: User = await signup(username);
     setUser(user);
+    setDisease(null);
     navigate("/");
   };
 
