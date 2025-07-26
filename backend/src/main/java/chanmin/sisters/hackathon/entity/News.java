@@ -16,10 +16,10 @@ public class News {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long news_id;
 
-    private String image_url;
+    private String img;
     private String title;
     private String content;
     private String company;
-    private String reporter;
-    private LocalDateTime time;
+    private String author;
+    private LocalDateTime date;
 }
