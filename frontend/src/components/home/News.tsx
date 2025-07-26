@@ -30,14 +30,14 @@ const News = () => {
 
   return (
     <div className="max-h-[720px] bg-white py-1.5 flex flex-col">
-      <div className="flex justify-between items-center mb-3 flex-shrink-0 px-4">
+      <div className="flex justify-between items-center mb-3 flex-shrink-0">
         <p>
           총 <span className="font-bold">{newsList.length}</span>건
         </p>
         <SortDropdown />
       </div>
 
-      <div className="overflow-y-auto flex-grow px-4">
+      <div className="overflow-y-auto flex-grow">
         {newsList.map((item) => (
           <div
             key={item.news_id}
