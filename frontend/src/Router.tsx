@@ -9,12 +9,16 @@ import LandingPage from "./pages/auth/LandingPage"
 import DiseasePage from "./pages/auth/DiseasePage"
 import PostPage from "./pages/community/PostPage"
 import ClinicalTrial from "./components/home/ClinicalTrial"
-import WriteRecord from "./pages/record/WriteRecord"
+import WriteMedicine from "./pages/record/WriteMedicine"
+import WriteFood from "./pages/record/WriteFood"
+import WriteSymptom from "./pages/record/WriteSymptom"
+import WriteHospital from "./pages/record/WriteHospital"
 
 import NewsDetail from "./pages/home/NewsDetail"
 import DiseaseInformationDetail from "./pages/home/DiseaseInformationDetail"
 import BenefitDetail from "./pages/home/BenefitDetail"
 import HospitalDoctorsDetail from "./pages/home/HospitalDoctorsDetail"
+import MedicineSearch from "./pages/record/MedicineSearch"
 
 export default function Router() {
   return (
@@ -34,7 +38,11 @@ export default function Router() {
         <Route path="/benefit/:id" element={<BenefitDetail />} />
         <Route path="/doctors/:id" element={<HospitalDoctorsDetail />} />
         <Route path="/clinical" element={<ClinicalTrial />} />
-        <Route path="/write" element={<WriteRecord />} />
+        <Route path="/writefood" element={<WriteFood />} />
+        <Route path="/writehospital" element={<WriteHospital />} />
+        <Route path="/writemedicine" element={<WriteMedicine />} />
+        <Route path="/writesymptom" element={<WriteSymptom />} />
+        <Route path="/medicinesearch" element={<MedicineSearch />} />
       </Routes>
     </BrowserRouter>
   )

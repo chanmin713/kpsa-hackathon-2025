@@ -7,26 +7,21 @@ const Food = () => {
     return (
         <div>
             <div className="px-2 mt-[65px] flex justify-end">
-                <span className="bg-gray-400 px-2 py-1 rounded-md text-white" onClick={() => navigate(`/write`)}>글쓰기</span>
+                <span className="bg-gray-400 px-2 py-1 rounded-md text-white" onClick={() => navigate(`/writefood`)}>글쓰기</span>
             </div>
             <div className="max-h-[575px] overflow-y-auto bg-white">
                 {foodData.map((item, idx) => (
                     <div key={idx} className="flex justify-between items-start py-4 border-b border-gray-200">
                         <div className="flex-1">
-                            <div className="text-base font-bold leading-snug">
-                                {item.title.length > 32
-                                    ? item.title.slice(0, 32) + "..."
-                                    : item.title}
-                            </div>
-                            <div className="text-base text-sm mt-1">식사일시 | &nbsp;
+                            <div className="text-base font-bold leading-snug text-lg">
                                 {item.date} {item.time}
                             </div>
                             <div className="text-sm">
-                                음&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;식 |  &nbsp;
+                                음식 |  &nbsp;
                                 {item.food}
                             </div>
                             <div className="text-sm">
-                                kcal&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |  &nbsp;
+                                kcal |  &nbsp;
                                 {item.kcal}
                             </div>
                         </div>
