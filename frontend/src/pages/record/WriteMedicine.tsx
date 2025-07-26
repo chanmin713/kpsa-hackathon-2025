@@ -10,6 +10,7 @@ const WriteMedicine = () => {
     const [time, setTime] = useState("")
     const [hospital, setHospital] = useState("")
     const [memo, setMemo] = useState("")
+    const today = new Date().toISOString().split("T")[0];
 
     const [medicines, setMedicines] = useState([
         { name: "타이레놀", schedule: "매일 식후 30분" },
@@ -32,6 +33,7 @@ const WriteMedicine = () => {
                         <input
                             type="date"
                             value={date}
+                            max={today}
                             onChange={(e) => setDate(e.target.value)}
                             className="border border-gray-300 rounded-lg px-4 py-2 text-gray-600"
                         />

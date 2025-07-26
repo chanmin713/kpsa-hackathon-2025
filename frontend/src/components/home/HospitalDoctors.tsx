@@ -3,9 +3,9 @@ import { useNavigate } from "react-router-dom";
 import SortDropdown from "./SortDropdown";
 import api from "../../apis/axios";
 
-import doctor1 from '../../assets/Images/doctor1.png'
+import doctor1 from '../../assets/Images/doctor3.png'
 import doctor2 from '../../assets/Images/doctor2.png'
-import doctor3 from '../../assets/Images/doctor3.png'
+import doctor3 from '../../assets/Images/doctor1.png'
 import doctor4 from '../../assets/Images/doctor4.png'
 import doctor5 from '../../assets/Images/doctor5.png'
 import doctor6 from '../../assets/Images/doctor6.png'
