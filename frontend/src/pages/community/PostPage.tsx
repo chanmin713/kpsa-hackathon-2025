@@ -24,7 +24,7 @@ function PostPage() {
           alt="프로필"
           className="w-6 h-6 rounded-full object-cover"
         />
-        <span>{post.user.loginId}</span>
+        <span>{post.user.username}</span>
       </div>
 
       <div className="whitespace-pre-wrap mt-6 text-base text-gray-800">

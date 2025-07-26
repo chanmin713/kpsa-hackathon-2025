@@ -1,15 +1,13 @@
 import { useState } from "react";
 import Button from "../../buttons/Button";
 import Modal from "../../common/Modal";
+import { useAuthStore } from "../../../storages/useAuthStorage";
 
-interface BannerProps {
-  days: number;
-  coins: number;
-}
-
-export default function Banner({ days, coins }: BannerProps) {
+export default function Banner() {
   const [checkedIn, setCheckedIn] = useState(false);
   const [showModal, setShowModal] = useState(false);
+
+  const { user } = useAuthStore();
 
   const handleClick = () => {
     if (!checkedIn) {
@@ -28,10 +26,10 @@ export default function Banner({ days, coins }: BannerProps) {
         {/* 출석 정보 (왼쪽 상단/하단) */}
         <div className="flex flex-col justify-between h-full">
           <div className="text-text-large font-bold">
-            연속 출석 {days}일째 🔥
+            연속 출석 {5}일째 🔥
           </div>
           <div className="text-text-small mt-2 text-white/80">
-            현재 코인 수: {coins}개
+            현재 코인 수: {user?.user_coin ?? 0}개
           </div>
         </div>
 

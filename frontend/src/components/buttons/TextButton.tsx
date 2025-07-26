@@ -1,15 +1,17 @@
 interface TextButtonProps {
   text: string;
   onClick: () => void;
+  disabled?: boolean;
   variant?: "primary" | "secondary";
 }
 
 export default function TextButton({
   text,
   onClick,
+  disabled,
   variant = "primary",
 }: TextButtonProps) {
-  const baseClasses = "w-full h-full flex items-center justify-center font-bold transition-colors py-2";
+  const baseClasses = "w-full flex items-center justify-center font-bold transition-colors py-2";
 
   const variants = {
     primary: "bg-main text-white hover:bg-hover",
@@ -19,7 +21,8 @@ export default function TextButton({
   return (
     <button
       onClick={onClick}
-      className={`${baseClasses} ${variants[variant]} h-[55px] rounded-md`}
+      disabled={disabled}
+      className={`${baseClasses} ${disabled ? "bg-secondary text-primary" : variants[variant]} h-[55px] rounded-md`}
       type="button"
     >
       {text}

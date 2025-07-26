@@ -10,7 +10,7 @@ function PostProfile({user}: PostProfileProps) {
     return (
         <div className="flex items-center gap-1">
             <img width={24} height={24} src={foodIcon} />
-            <span>{user.loginId}</span>
+            <span>{user.username}</span>
         </div>
     )
 }

@@ -1,3 +1,4 @@
+import type { Disease } from "../types/user";
 import api from "./axios";
 
 export interface DiseaseInformationData {
@@ -13,3 +14,8 @@ export const fetchDiseaseById = async (infoId: number): Promise<DiseaseInformati
     const response = await api.get<DiseaseInformationData>(`/info/${infoId}`);
     return response.data;
 };
+
+export const fetchDiseases = async (): Promise<Disease> => {
+    const response = await api.get<Disease>(`/diseases`);
+    return response.data;
+}

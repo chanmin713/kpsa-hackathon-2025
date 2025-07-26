@@ -113,7 +113,7 @@ function Home() {
                 <SettingButton/>
             </div>
             <div className="flex-1 overflow-y-auto mb-[80px]">
-                <Banner days={5} coins={1800} />
+                <Banner />
                 <AccordionList items={menus} />
             </div>
             <BottomNavigation />
