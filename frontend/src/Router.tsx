@@ -34,8 +34,8 @@ export default function Router() {
         <Route path="/signup" element={<SignupPage />} />
         <Route path="/signup/disease" element={<DiseasePage />} />
         <Route path="/news/:id" element={<NewsDetail />} />
-        <Route path="/disease/:id" element={<DiseaseInformationDetail />} />
-        <Route path="/benefit/:id" element={<BenefitDetail />} />
+        <Route path="/info/:id" element={<DiseaseInformationDetail />} />
+        <Route path="/benefits/:id" element={<BenefitDetail />} />
         <Route path="/doctors/:id" element={<HospitalDoctorsDetail />} />
         <Route path="/clinical" element={<ClinicalTrial />} />
         <Route path="/writefood" element={<WriteFood />} />
