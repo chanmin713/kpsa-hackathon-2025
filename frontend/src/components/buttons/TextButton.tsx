@@ -1,5 +1,3 @@
-import React from "react";
-
 interface TextButtonProps {
   text: string;
   onClick: () => void;
@@ -21,7 +19,7 @@ export default function TextButton({
   return (
     <button
       onClick={onClick}
-      className={`${baseClasses} ${variants[variant]}`}
+      className={`${baseClasses} ${variants[variant]} h-[55px] rounded-md`}
       type="button"
     >
       {text}
