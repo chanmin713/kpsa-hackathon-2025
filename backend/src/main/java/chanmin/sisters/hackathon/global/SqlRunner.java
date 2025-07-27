@@ -26,6 +26,7 @@ public class SqlRunner implements CommandLineRunner {
         executeSqlIfTableEmpty("news", "sql/news.sql");
         executeSqlIfTableEmpty("disease", "sql/disease.sql");
         executeSqlIfTableEmpty("medication", "sql/medication.sql");
+        executeSqlIfTableEmpty("board", "sql/dummy_board_and_comment_data.sql");
     }
 
     private void executeSqlIfTableEmpty(String tableName, String sqlFilePath) throws Exception {
