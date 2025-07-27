@@ -1,45 +1,29 @@
 function CommunityScrollView(props: {
-    activeTab: string
-    setActiveTab: (tab: string) => void
+    activeTab: string;
+    setActiveTab: (tab: string) => void;
 }) {
-    const { activeTab, setActiveTab } = props
-    const tabs = ['전체', '정보', '질문', '자유게시판']
+    const { activeTab, setActiveTab } = props;
+    const tabs = ['전체', '정보', '질문', '자유게시판'];
 
     return (
-        <div
-            style={{
-                width: '100%',
-                overflowX: 'auto',
-                whiteSpace: 'nowrap',
-                scrollbarWidth: 'none',
-            }}
-        >
-            <div
-                style={{
-                    display: 'inline-flex',
-                    height: '35px',
-                    gap: '15px',
-                }}
-            >
-                {tabs.map(tab => (
+        <div className="w-full flex justify-center">
+            <div className="inline-flex h-[35px] gap-[25px]">
+                {tabs.map((tab) => (
                     <div
                         key={tab}
                         onClick={() => setActiveTab(tab)}
-                        style={{
-                            minWidth: '80px',
-                            textAlign: 'center',
-                            lineHeight: '35px',
-                            fontWeight: activeTab === tab ? '700' : '400',
-                            borderBottom: activeTab === tab ? '3px solid #ccc' : '3px solid transparent',
-                            cursor: 'pointer',
-                        }}
+                        className={`min-w-[80px] text-center leading-[35px] cursor-pointer border-b-[3px] ${
+                            activeTab === tab
+                                ? 'font-bold border-blue-300'
+                                : 'font-normal border-transparent'
+                        }`}
                     >
                         {tab}
                     </div>
                 ))}
             </div>
         </div>
-    )
+    );
 }
 
-export default CommunityScrollView
+export default CommunityScrollView;

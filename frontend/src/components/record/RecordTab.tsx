@@ -30,7 +30,7 @@ function RecordTab(props: {
                         <img src={tab.icon} alt="icon" className="w-[42px] h-[42px]" />
                         <span
                             className={`text-sm ${isActive
-                                ? 'border-b-4 pb-1 border-gray-300 font-bold text-black'
+                                ? 'border-b-4 pb-1 border-blue-300 font-bold text-black'
                                 : 'border-b-4 border-transparent text-gray-500'
                                 }`}
                         >

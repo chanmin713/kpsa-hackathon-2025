@@ -9,11 +9,18 @@ import AnyListPage from "./AnyListPage";
 import { Edit } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { usePostStore } from "../../storages/usePostStorage";
+import FloatingButton from "../../components/buttons/FloatingButton";
+import ChatModal from "../home/ChatModal";
+import DoctorIcon from '../../assets/Icons/DoctorIcon.svg'
+
+import Logo from '../../assets/Images/logo.svg'
+import SearchIcon from '../../assets/Icons/SearchIcon.svg'
 
 function Community() {
   const navigate = useNavigate();
   const [activeTab, setActiveTab] = useState("전체");
   const { setTitle, setCategory, setContent } = usePostStore();
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   useEffect(() => {
     const savedTab = localStorage.getItem("activeCommunityTab");
@@ -33,16 +40,22 @@ function Community() {
     setCategory("FREE");
     setContent(null);
   }
-  
+
   return (
     <div className="flex flex-col h-screen">
       {/* 헤더 (스크롤 X) */}
       <div>
-        <div className="flex justify-end p-5 px-6 gap-x-2">
-          <span onClick={onEditButtonClick}>
-            <Edit size={24} />
-          </span>
-          <img src={AlertIcon} alt="알림" />
+        <div className="flex justify-between p-5 px-6">
+          <img src={Logo} className="w-[40px]" />
+          <div className="w-[250px] rounded-lg border-gray-400 border-[1px] flex justify-between items-center px-2">
+            <input
+              type="text"
+              placeholder="검색"
+              className="flex-1 ml-2 outline-none text-sm w-[50px]"
+            />
+            <img src={SearchIcon} alt="search icon" className="w-5 h-5" />
+          </div>
+          <img src={AlertIcon} />
         </div>
         <CommunityScrollView
           activeTab={activeTab}
@@ -56,6 +69,12 @@ function Community() {
         {activeTab === "자유게시판" && <AnyListPage />}
       </div>
       <BottomNavigation />
+
+      <FloatingButton onClick={() => setIsModalOpen(true)}>
+        <img src={DoctorIcon} />
+      </FloatingButton>
+
+      {isModalOpen && <ChatModal onClose={() => setIsModalOpen(false)} />}
     </div>
   )
 }

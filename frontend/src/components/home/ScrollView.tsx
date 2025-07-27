@@ -1,31 +1,27 @@
-import { useState } from "react"
-
 function ScrollView(props: {
-    activeTab: string
-    setActiveTab: (tab: string) => void
+    activeTab: string;
+    setActiveTab: (tab: string) => void;
 }) {
-    const { activeTab, setActiveTab } = props
-    const tabs = ['뉴스', '질환 정보', '지원금', '임상시험', '병원/의료진']
+    const { activeTab, setActiveTab } = props;
+    const tabs = ['뉴스', '질환 정보', '지원금', '임상시험', '병원/의료진'];
 
     return (
-        <div style={{ display: 'flex', height: '35px', gap: '5px' }}>
-            {tabs.map(tab => (
+        <div className="flex h-[35px] gap-[5px]">
+            {tabs.map((tab) => (
                 <div
                     key={tab}
                     onClick={() => setActiveTab(tab)}
-                    style={{
-                        flex: 1,
-                        textAlign: 'center',
-                        lineHeight: '35px',
-                        fontWeight: activeTab === tab ? '700' : '400',
-                        borderBottom: activeTab === tab ? '3px solid #ccc' : '3px solid transparent',
-                    }}
+                    className={`flex-1 text-center leading-[35px] cursor-pointer ${
+                        activeTab === tab
+                            ? 'font-bold border-b-[3px] border-blue-300'
+                            : 'font-normal border-b-[3px] border-transparent'
+                    }`}
                 >
                     {tab}
                 </div>
             ))}
         </div>
-    )
+    );
 }
 
-export default ScrollView
+export default ScrollView;
