@@ -5,20 +5,73 @@ import PictureIcon from '../../assets/Icons/PictureIcon.svg'
 import { LoadingOverlay, LoadingSpinner } from '../../styles/loading.styles'
 import FoodItem from "../../components/record/FoodItem"
 import TextButton from "../../components/buttons/TextButton"
+import { useAuthStore } from "../../storages/useAuthStorage";
+import api from "../../apis/axios";
 
 const WriteFood = () => {
     const navigate = useNavigate()
     const fileInputRef = useRef<HTMLInputElement>(null)
     const [isLoading, setIsLoading] = useState(false)
 
-    const [food, setFood] = useState([
-        { name: "백미밥", kcal: "300kcal" },
-        { name: "계란말이", kcal: "120kcal" },
-        { name: "오이무침", kcal: "90kcal" },
-        { name: "연근조림", kcal: "100kcal" },
-        { name: "연근조림", kcal: "100kcal" },
-        { name: "연근조림", kcal: "100kcal" },
-    ])
+    const [showModal, setShowModal] = useState(false);
+    const [modalText, setModalText] = useState("");
+
+    const handleModalClose = () => setShowModal(false);
+
+    const today = new Date().toISOString().split("T")[0]; // 날짜만 추출 (예: 2025-07-27)
+
+    const { user } = useAuthStore(); // 사용자 정보 가져오기
+
+
+    const [food, setFood] = useState<{ name: string; kcal: string }[]>([]);
+        // [
+        // { name: "백미밥", kcal: "300kcal" },
+        // { name: "계란말이", kcal: "120kcal" },
+        // { name: "오이무침", kcal: "90kcal" },
+        // { name: "연근조림", kcal: "100kcal" },
+        // { name: "연근조림", kcal: "100kcal" },
+        // { name: "연근조림", kcal: "100kcal" },
+        // ]
+    // );
+
+    const handleSave = async () => {
+        if (!food.length) {
+            setModalText("음식 정보가 없습니다.");
+            setShowModal(true);
+            return;
+        }
+
+        if (!user) {
+            setModalText("로그인이 필요합니다.");
+            setShowModal(true);
+            return;
+        }
+
+        const now = new Date().toISOString();
+
+        try {
+            for (const item of food) {
+                const kcalNumber = parseInt(item.kcal.replace(/[^\d]/g, ""), 10) || 0;
+
+                const requestBody = {
+                    user,
+                    food_name: item.name,
+                    food_kcal: kcalNumber,
+                    food_date: now,
+                };
+
+                await api.post("/food", requestBody);
+            }
+
+            alert("저장되었습니다.");
+            navigate(-1);
+        } catch (err) {
+            console.error("저장 실패:", err);
+            alert("저장에 실패했습니다.");
+        }
+    };
+
+
 
     const handleUploadClick = () => {
         if (fileInputRef.current) {
@@ -121,9 +174,7 @@ const WriteFood = () => {
                 <TextButton
                     text="저장"
                     variant="primary"
-                    onClick={() => {
-                        // 저장 로직 작성
-                    }}
+                    onClick={handleSave}
                 />
             </div>
         </>
