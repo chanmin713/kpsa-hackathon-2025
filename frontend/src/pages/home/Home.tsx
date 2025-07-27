@@ -12,6 +12,10 @@ import HospitalDoctors from "../../components/home/HospitalDoctors";
 import Logo from '../../assets/Images/logo.svg'
 import SearchIcon from '../../assets/Icons/SearchIcon.svg'
 
+import FloatingButton from '../../components/buttons/FloatingButton';
+import DoctorIcon from '../../assets/Icons/DoctorIcon.svg'
+import ChatModal from "./ChatModal";
+
 function Home() {
     const [activeTab, setActiveTab] = useState("뉴스");
 
@@ -26,6 +30,8 @@ function Home() {
         setActiveTab(tab);
         localStorage.setItem("activeTab", tab);
     };
+
+    const [isModalOpen, setIsModalOpen] = useState(false);
 
     return (
         <>
@@ -52,6 +58,12 @@ function Home() {
                 {activeTab === "임상시험" && <ClinicalTrial />}
                 {activeTab === "병원/의료진" && <HospitalDoctors />}
             </div>
+
+            <FloatingButton onClick={() => setIsModalOpen(true)}>
+                <img src={DoctorIcon} />
+            </FloatingButton>
+
+            {isModalOpen && <ChatModal onClose={() => setIsModalOpen(false)} />}
 
             <BottomNavigation />
         </>
