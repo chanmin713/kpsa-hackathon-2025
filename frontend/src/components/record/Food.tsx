@@ -49,7 +49,7 @@ const Food = ({ selectedDate }: { selectedDate: Date | null }) => {
                     글쓰기
                 </span>
             </div>
-            <div className="max-h-[575px] overflow-y-auto bg-white">
+            <div className="max-h-[200px] overflow-y-auto bg-white">
                 {foodList
                     .filter(item => {
                         if (!selectedDate) return false;
