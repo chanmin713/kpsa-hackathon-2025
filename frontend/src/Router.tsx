@@ -20,6 +20,7 @@ import BenefitDetail from "./pages/home/BenefitDetail"
 import HospitalDoctorsDetail from "./pages/home/HospitalDoctorsDetail"
 import MedicineSearch from "./pages/record/MedicineSearch"
 import NewPostPage from "./pages/community/NewPostPage"
+import MedicineCycle from "./pages/record/MedicineCycle"
 
 export default function Router() {
   return (
@@ -45,6 +46,7 @@ export default function Router() {
         <Route path="/writemedicine" element={<WriteMedicine />} />
         <Route path="/writesymptom" element={<WriteSymptom />} />
         <Route path="/medicinesearch" element={<MedicineSearch />} />
+        <Route path="/medicinecycle" element={<MedicineCycle />} />
       </Routes>
     </BrowserRouter>
   )

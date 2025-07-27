@@ -2,8 +2,10 @@
 # This file supports web-based object classfication
 # by sangkny
 # -------------------------------------------------
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, jsonify
 from werkzeug.utils import secure_filename
+
+from flask_cors import CORS
 
 import cv2
 import numpy as np
@@ -13,6 +15,8 @@ from food_classifier_yolo import food_classifier_Json
 
 app = Flask(__name__)
 #App name
+CORS(app)
+
 
 def recognize(filename):
     image = cv2.imread(filename) # be careful for hangul name
@@ -45,7 +49,7 @@ def upload_file():
         t0 = time.time()
         res = recognize("./images_rec/"+secure_filename(f.filename))
         print("elapsed time:",time.time() - t0)
-        return res
+        return jsonify(res)
         # return the result
 
         # return 'file uploaded successfully'
