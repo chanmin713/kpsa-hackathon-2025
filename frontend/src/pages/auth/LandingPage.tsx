@@ -1,11 +1,19 @@
 import TextButton from "../../components/buttons/TextButton";
 import { useNavigate } from "react-router-dom";
 import RotatingPills from "../../components/common/Wave";
+import { useSignupStore } from "../../storages/useSignupStorage";
+import { useEffect } from "react";
 
 function LandingPage() {
   const navigate = useNavigate();
   const onLoginClick = () => navigate("/login");
   const onSignupClick = () => navigate("/signup");
+
+  const { setUsername, setDisease } = useSignupStore();
+  useEffect(() => {
+    setUsername(null);
+    setDisease(null);
+  }, []);
 
   return (
     <div className="flex flex-col justify-between items-center h-screen px-6 py-12 bg-main">

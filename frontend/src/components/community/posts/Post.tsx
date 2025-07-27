@@ -16,7 +16,7 @@ function Post({
   onLikeClick,
 }: PostProps) {
   const navigate = useNavigate();
-  const goDetail = () => navigate(`/community/post/${post.boardId}`);
+  const goDetail = () => navigate(`/community/post/${post.board_id}`);
 
   return (
     <article
@@ -31,23 +31,19 @@ function Post({
         <div className="flex items-center gap-2">
           <PostButton
             icon={<MessageSquare />}
-            count={post.replies}
             onClick={(e) => {
               e.stopPropagation();
               onReplyClick();
             }}
             selectedColor="#0064E0"
-            isSelected={post.isReplied}
           />
           <PostButton
-            icon={<Heart fill={post.isLiked ? "red" : "none"} />}
-            count={post.likes}
+            icon={<Heart />}
             onClick={(e) => {
               e.stopPropagation();
               onLikeClick();
             }}
             selectedColor="red"
-            isSelected={post.isLiked}
           />
         </div>
       </div>

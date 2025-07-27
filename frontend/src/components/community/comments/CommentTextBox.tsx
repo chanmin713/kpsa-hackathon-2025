@@ -1,13 +1,33 @@
 import React, { useState } from 'react';
 import { Send, Smile } from 'lucide-react';
+import type { CommentPost, PostInfo } from '../../../types/posts';
+import { useAuthStore } from '../../../storages/useAuthStorage';
+import { sendComment } from '../../../apis/board';
 
-export default function ChatInput() {
+interface ChatInputProps {
+  post: PostInfo | null;
+  refreshComment: () => void;
+}
+
+export default function ChatInput({ post, refreshComment }: ChatInputProps) {
   const [message, setMessage] = useState<string>('');
+  const { user } = useAuthStore();
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement> | React.KeyboardEvent<HTMLTextAreaElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement> | React.KeyboardEvent<HTMLTextAreaElement>) => {
     e.preventDefault();
-    if (message.trim()) {
+    if (message.trim() && post && user) {
+      const chat: CommentPost = {
+        board: {
+          board_id: post.board_id
+        },
+        user: {
+          user_id: user.user_id
+        },
+        content: message.trim()
+      }
+      await sendComment(chat);
       setMessage('');
+      refreshComment();
     }
   };
 

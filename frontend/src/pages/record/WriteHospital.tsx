@@ -4,6 +4,8 @@ import BackIcon from '../../assets/Icons/BackIcon.svg';
 import TextButton from "../../components/buttons/TextButton";
 import api from "../../apis/axios";
 import { useAuthStore } from "../../storages/useAuthStorage";
+import Modal from "../../components/common/Modal";
+import Button from "../../components/buttons/Button";
 
 const WriteHospital = () => {
     const navigate = useNavigate();
@@ -12,6 +14,10 @@ const WriteHospital = () => {
     const [hospital, setHospital] = useState("");
     const [diagnosis, setDiagnosis] = useState("");
     const [memo, setMemo] = useState("");
+    const [showModal, setShowModal] = useState(false);
+    const [modalText, setModalText] = useState("");
+
+    const handleModalClose = () => setShowModal(false);
 
     const today = new Date().toISOString().split(" ")[0];
 
@@ -19,12 +25,16 @@ const WriteHospital = () => {
 
     const handleSave = async () => {
         if (!date || !time || !hospital || !diagnosis) {
-            alert("모든 필드를 입력해 주세요.");
+            // alert("모든 필드를 입력해 주세요.");
+            setModalText("모든 필드를 입력해 주세요.");
+            setShowModal(true);
             return;
         }
 
         if (!user) {
-            alert("로그인이 필요합니다.");
+            // alert("로그인이 필요합니다.");
+            setModalText("로그인이 필요합니다.");
+            setShowModal(true);
             return;
         }
 
@@ -109,6 +119,17 @@ const WriteHospital = () => {
                     onClick={handleSave}
                 />
             </div>
+
+            {showModal && (
+                <Modal onClose={handleModalClose}>
+                    <div className="text-center">
+                    <p className="text-lg font-semibold mb-4">{modalText}</p>
+                    <Button onClick={handleModalClose}>
+                        <span>확인</span>
+                    </Button>
+                    </div>
+                </Modal>
+            )}
         </div>
     );
 };

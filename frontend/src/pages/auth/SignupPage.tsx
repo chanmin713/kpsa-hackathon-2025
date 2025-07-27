@@ -1,19 +1,20 @@
 import { useNavigate } from "react-router-dom";
-import { useState } from "react";
 import TextButton from "../../components/buttons/TextButton";
 import BackButton from "../../components/buttons/BackButton";
 import type { User } from "../../types/user";
 import { signup } from "../../apis/userAuth";
 import { useAuthStore } from "../../storages/useAuthStorage";
+import { useSignupStore } from "../../storages/useSignupStorage";
 
 function SignupPage() {
   const navigate = useNavigate();
-  const { setUser, disease, setDisease } = useAuthStore();
-  const [username, setUsername] = useState("");
+  const { setUser } = useAuthStore();
+  const { username, setUsername, disease, setDisease } = useSignupStore();
 
   const onSignup = async () => {
-    const user: User = await signup(username);
+    const user: User = await signup(username ?? "김환자");
     setUser(user);
+    setUsername(null);
     setDisease(null);
     navigate("/");
   };
@@ -36,7 +37,7 @@ function SignupPage() {
         <input
           type="text"
           placeholder="사용자 이름"
-          value={username}
+          value={username ?? ""}
           onChange={(e) => setUsername(e.target.value)}
           className="w-full max-w-md p-3 mb-4 focus:outline-none border-b-2 border-gray-300 focus:border-main transition-colors"
         />
@@ -55,7 +56,7 @@ function SignupPage() {
         <TextButton
           text="회원가입"
           onClick={onSignup}
-          disabled={username.trim() === ""}
+          disabled={username?.trim() === ""}
         />
 
         <p className="mt-6 text-sm text-center text-primary">

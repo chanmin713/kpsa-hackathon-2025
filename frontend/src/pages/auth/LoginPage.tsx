@@ -1,14 +1,16 @@
 import { useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import TextButton from "../../components/buttons/TextButton";
 import BackButton from "../../components/buttons/BackButton";
 import { login } from "../../apis/userAuth";
 import type { User } from "../../types/user";
 import { useAuthStore } from "../../storages/useAuthStorage";
+import { useSignupStore } from "../../storages/useSignupStorage";
 
 function LoginPage() {
   const navigate = useNavigate();
   const { setUser } = useAuthStore();
+  const { setUsername: setSignup, setDisease } = useSignupStore();
   const [username, setUsername] = useState("");
 
   const onLogin = async () => {
@@ -16,6 +18,11 @@ function LoginPage() {
     setUser(user);
     navigate("/");
   };
+
+  useEffect(() => {
+    setSignup(null);
+    setDisease(null);
+  }, []);
 
   const onSignupClick = () => navigate("/signup");
 

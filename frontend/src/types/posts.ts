@@ -1,19 +1,29 @@
 import type { User } from "./user";
 
+export type category = "TOTAL" | "INFO" | "QNA" | "FREE";
+
 export type PostInfo = {
-  boardId: number;
+  board_id: number;
   user: User;
+  category: category,
   title: string;
   content: string;
-  replies: number;
-  likes: number;
-  isReplied: boolean;
-  isLiked: boolean; 
+  dateTime: string;
 }
 
 export type CommentInfo = {
-  boardId: number;
-  commentId: number;
+  comment_id: number;
   content: string;
   user: User;
+  board: PostInfo;
+}
+
+export type CommentPost = {
+  content: string;
+  user: {
+    user_id: number;
+  }
+  board: {
+    board_id: number;
+  }
 }
