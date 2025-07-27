@@ -13,11 +13,23 @@ type HospitalRecordItem = {
     memo: string;
 };
 
-const Hospital = () => {
+const Hospital = ({ selectedDate }: { selectedDate: Date | null }) => {
     const navigate = useNavigate();
     const { user } = useAuthStore();
     const [hrList, setHrList] = useState<HospitalRecordItem[]>([]);
 
+    const formatDate = (date: Date) => {
+        return date.toISOString().slice(0, 10); // 'YYYY-MM-DD'
+    };
+
+    const parseLocalDate = (dateString: string) => {
+        const [year, month, day] = dateString.split('T')[0].split('-').map(Number);
+        return new Date(year, month - 1, day); // month는 0부터 시작하므로 -1
+    };
+
+    const isSameDate = (date1: Date, date2: Date) => {
+        return formatDate(date1) === formatDate(date2);
+    };
     console.log("userName:", user?.username);
 
     useEffect(() => {
@@ -52,31 +64,37 @@ const Hospital = () => {
                     글쓰기
                 </span>
             </div>
-            <div className="max-h-[575px] overflow-y-auto bg-white">
-                {hrList.map((item) => (
-                    <div
-                        key={item.hr_id}
-                        className="flex justify-between items-start py-4 border-b border-gray-200"
-                    >
-                        <div className="flex-1">
-                            <div className="text-base font-bold leading-snug text-lg">
-                                {item.datetime}
-                            </div>
-                            <div className="text-sm">
-                                병 원 | &nbsp;
-                                {item.location}
-                            </div>
-                            <div className="text-sm">
-                                검 사 | &nbsp;
-                                {item.symptom}
-                            </div>
-                            <div className="text-sm">
-                                메 모 | &nbsp;
-                                {item.memo}
+            <div className="max-h-[180px] overflow-y-auto bg-white">
+                {hrList
+                    .filter(item => {
+                        if (!selectedDate) return false;
+                        const itemDate = parseLocalDate(item.datetime);
+                        return isSameDate(itemDate, selectedDate);
+                    })
+                    .map((item) => (
+                        <div
+                            key={item.hr_id}
+                            className="flex justify-between items-start py-4 border-b border-gray-200"
+                        >
+                            <div className="flex-1">
+                                <div className="text-base font-bold leading-snug text-lg">
+                                    {item.datetime}
+                                </div>
+                                <div className="text-sm">
+                                    병 원 | &nbsp;
+                                    {item.location}
+                                </div>
+                                <div className="text-sm">
+                                    검 사 | &nbsp;
+                                    {item.symptom}
+                                </div>
+                                <div className="text-sm">
+                                    메 모 | &nbsp;
+                                    {item.memo}
+                                </div>
                             </div>
                         </div>
-                    </div>
-                ))}
+                    ))}
             </div>
         </div>
     );

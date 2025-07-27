@@ -39,6 +39,13 @@ const Food = () => {
         fetchFood();
     }, [user]);
 
+    const formatDate = (date: Date) => {
+        return date.toISOString().slice(0, 10);
+    };
+
+    const isSameDate = (date1: Date, date2: Date) =>
+        date1.toISOString().split("T")[0] === date2.toISOString().split("T")[0];
+
     return (
         <div>
             <div className="px-2 mt-[65px] flex justify-end">
@@ -49,6 +56,7 @@ const Food = () => {
                     글쓰기
                 </span>
             </div>
+<<<<<<< HEAD
             <div className="max-h-[575px] overflow-y-auto bg-white">
                 {foodList.map((item) => {
                     const date = new Date(item.food_date);
@@ -77,6 +85,31 @@ const Food = () => {
                         </div>
                     );
                 })}
+=======
+            <div className="max-h-[180px] overflow-y-auto bg-white">
+                {foodData
+                    .filter(item => {
+                        if (!selectedDate) return false;
+                        return item.date === formatDate(selectedDate);
+                    })
+                    .map((item, idx) => (
+                        <div key={idx} className="flex justify-between items-start py-4 border-b border-gray-200">
+                            <div className="flex-1">
+                                <div className="text-base font-bold leading-snug text-lg">
+                                    {item.date} {item.time}
+                                </div>
+                                <div className="text-sm">
+                                    음식 |  &nbsp;
+                                    {item.food}
+                                </div>
+                                <div className="text-sm">
+                                    kcal |  &nbsp;
+                                    {item.kcal}
+                                </div>
+                            </div>
+                        </div>
+                    ))}
+>>>>>>> 35499b1bbdabaa786c6e256a6223f1831a09b4d8
             </div>
         </div>
     );
