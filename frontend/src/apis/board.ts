@@ -1,4 +1,4 @@
-import type { category, CommentInfo, CommentPost, PostInfo } from "../types/posts";
+import type { category, CommentInfo, CommentPost, PostInfo, PostPost } from "../types/posts";
 import api from "./axios";
 
 export const boardsByCategory = async (category: category): Promise<PostInfo[]> => {
@@ -11,7 +11,7 @@ export const boardById = async (id: number): Promise<PostInfo> => {
     return response.data;
 };
 
-export const postBoard = async (post: PostInfo): Promise<PostInfo> => {
+export const postBoard = async (post: PostPost): Promise<PostInfo> => {
     const response = await api.post<PostInfo>(`/boards`, post);
     return response.data;
 };

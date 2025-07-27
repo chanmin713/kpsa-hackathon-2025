@@ -11,6 +11,15 @@ export type PostInfo = {
   dateTime: string;
 }
 
+export type PostPost = {
+  user: {
+    user_id: number;
+  }
+  category: category;
+  title: string;
+  content: string;
+}
+
 export type CommentInfo = {
   comment_id: number;
   content: string;

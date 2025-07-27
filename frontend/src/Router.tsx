@@ -19,6 +19,7 @@ import DiseaseInformationDetail from "./pages/home/DiseaseInformationDetail"
 import BenefitDetail from "./pages/home/BenefitDetail"
 import HospitalDoctorsDetail from "./pages/home/HospitalDoctorsDetail"
 import MedicineSearch from "./pages/record/MedicineSearch"
+import NewPostPage from "./pages/community/NewPostPage"
 
 export default function Router() {
   return (
@@ -27,6 +28,7 @@ export default function Router() {
         <Route path="/" element={<Home />} />
         <Route path="/community" element={<Community />} />
         <Route path="/community/post/:id" element={<PostPage />} />
+        <Route path="/community/post/new" element={<NewPostPage />} />
         <Route path="/record" element={<Record />} />
         <Route path="/mypage" element={<MyPage />} />
         <Route path="/landing" element={<LandingPage />} />
