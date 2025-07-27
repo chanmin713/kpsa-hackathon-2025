@@ -9,11 +9,15 @@ import AnyListPage from "./AnyListPage";
 import { Edit } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { usePostStore } from "../../storages/usePostStorage";
+import FloatingButton from "../../components/buttons/FloatingButton";
+import ChatModal from "../home/ChatModal";
+import DoctorIcon from '../../assets/Icons/DoctorIcon.svg'
 
 function Community() {
   const navigate = useNavigate();
   const [activeTab, setActiveTab] = useState("전체");
   const { setTitle, setCategory, setContent } = usePostStore();
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   useEffect(() => {
     const savedTab = localStorage.getItem("activeCommunityTab");
@@ -56,6 +60,12 @@ function Community() {
         {activeTab === "자유게시판" && <AnyListPage />}
       </div>
       <BottomNavigation />
+
+      <FloatingButton onClick={() => setIsModalOpen(true)}>
+        <img src={DoctorIcon} />
+      </FloatingButton>
+
+      {isModalOpen && <ChatModal onClose={() => setIsModalOpen(false)} />}
     </div>
   )
 }

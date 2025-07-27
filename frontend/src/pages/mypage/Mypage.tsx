@@ -9,7 +9,10 @@ import type { IconListItemProps } from "../../components/mypage/accordion/IconLi
 import IconList from "../../components/mypage/accordion/IconList";
 import Modal from "../../components/common/Modal";
 import Button from "../../components/buttons/Button";
+import DoctorIcon from '../../assets/Icons/DoctorIcon.svg'
 import { useState } from "react";
+import ChatModal from "../home/ChatModal";
+import FloatingButton from "../../components/buttons/FloatingButton";
 
 interface AccordionDataItem {
   title: string;
@@ -19,6 +22,7 @@ interface AccordionDataItem {
 function Home() {
     // const navigate = useNavigate();
     const [showModal, setShowModal] = useState(false);
+    const [isModalOpen, setIsModalOpen] = useState(false);
 
     const handleModalOpen = () => {
     setShowModal(true);
@@ -136,6 +140,11 @@ function Home() {
                 </div>
                 </Modal>
             )}
+            <FloatingButton onClick={() => setIsModalOpen(true)}>
+                <img src={DoctorIcon} />
+            </FloatingButton>
+
+            {isModalOpen && <ChatModal onClose={() => setIsModalOpen(false)} />}
         </div>
     );
 }
