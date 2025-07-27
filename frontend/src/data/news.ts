@@ -1,65 +1,22 @@
-import doctor2 from '../assets/Images/doctor2.png'
+export interface Medicine {
+  medi_id: number;
+  name: string;
+  explaination: string;
+  schedule: string;
+}
 
-export const newsData = [
+export const medicines: Medicine[] = [
   {
-    title: "마운트 시나이 연구진, 경증 크론병과 관련된 생물학적 표지자 발견",
-    content: "뉴스 상세 내용입니다.",
-    date: "2일전",
-    company: '대한뉴스',
-    author: '김기자',
-    img: doctor2
+    medi_id: 1,
+    name: "타이레놀",
+    explaination: "통증 완화 및 해열제",
+    schedule: "매일 식후 30분",
   },
   {
-    title: "트렘피어로 판매되는 구셀쿠맙, 크론병 기존 치료법보다 효과 높아",
-    content: "뉴스 상세 내용입니다.",
-    date: "2일전",
-    company: '대한뉴스',
-    author: '김기자',
-    img: doctor2
+    medi_id: 2,
+    name: "베이글",
+    explaination: "소화 촉진제",
+    schedule: "매일 오후 12:00",
   },
-  {
-    title: "건강한 식물 기반 식단이 염증성 장 질환 위험을 줄일 수 있습니다",
-    content: "뉴스 상세 내용입니다.",
-    date: "1일전",
-    company: '대한뉴스',
-    author: '김기자',
-    img: doctor2
-  },
-  {
-    title: "대장암부터 장염까지... 하루 한 접시 ‘이 음식’이 장 건강 지키는 결정적 열쇠",
-    content: "뉴스 상세 내용입니다.",
-    date: "2025.7.17",
-    company: '대한뉴스',
-    author: '김기자',
-    img: doctor2
-  },
-  {
-    title: "대장암부터 장염까지... 하루 한 접시 ‘이 음식’이 장 건강 지키는 결정적 열쇠 열쇠 열쇠 열쇠 열쇠 열쇠",
-    content: "뉴스 상세 내용입니다.",
-    date: "2025.7.17",
-    company: '대한뉴스',
-    author: '김기자',
-    img: doctor2
-  }, {
-    title: "대장암부터 장염까지... 하루 한 접시 ‘이 음식’이 장 건강 지키는 결정적 열쇠",
-    content: "뉴스 상세 내용입니다.",
-    date: "2025.7.17",
-    company: '대한뉴스',
-    author: '김기자',
-    img: doctor2
-  }, {
-    title: "대장암부터 장염까지... 하루 한 접시 ‘이 음식’이 장 건강 지키는 결정적 열쇠",
-    content: "뉴스 상세 내용입니다.",
-    date: "2025.7.17",
-    company: '대한뉴스',
-    author: '김기자',
-    img: doctor2
-  }, {
-    title: "대장암부터 장염까지... 하루 한 접시 ‘이 음식’이 장 건강 지키는 결정적 열쇠",
-    content: "뉴스 상세 내용입니다.",
-    date: "2025.7.17",
-    company: '대한뉴스',
-    author: '김기자',
-    img: doctor2
-  },
-]
+  // 필요한 약 더 추가
+];

@@ -9,6 +9,9 @@ import Benefit from "../../components/home/Benefit";
 import ClinicalTrial from "../../components/home/ClinicalTrial";
 import HospitalDoctors from "../../components/home/HospitalDoctors";
 
+import Logo from '../../assets/Images/logo.svg'
+import SearchIcon from '../../assets/Icons/SearchIcon.svg'
+
 function Home() {
     const [activeTab, setActiveTab] = useState("뉴스");
 
@@ -26,7 +29,16 @@ function Home() {
 
     return (
         <>
-            <div className="flex justify-end p-5 px-6">
+            <div className="flex justify-between p-5 px-6">
+                <img src={Logo} className="w-[40px]" />
+                <div className="w-[250px] rounded-lg border-gray-400 border-[1px] flex justify-between items-center px-2">
+                    <input
+                        type="text"
+                        placeholder="검색"
+                        className="flex-1 ml-2 outline-none text-sm w-[50px]"
+                    />
+                    <img src={SearchIcon} alt="search icon" className="w-5 h-5" />
+                </div>
                 <img src={AlertIcon} />
             </div>
 

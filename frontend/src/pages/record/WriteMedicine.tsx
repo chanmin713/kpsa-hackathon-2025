@@ -1,8 +1,11 @@
-import { useState } from "react"
-import { useNavigate } from "react-router-dom"
+import { useEffect, useState } from "react"
+import { useNavigate, useLocation } from "react-router-dom"
 import BackIcon from '../../assets/Icons/BackIcon.svg'
 import TextButton from "../../components/buttons/TextButton"
 import MedicineItem from "../../components/record/MedicineItem"
+import type { Pill } from "../../data/pill"
+import api from "../../apis/axios"
+import { useAuthStore } from "../../storages/useAuthStorage";
 
 const WriteMedicine = () => {
     const navigate = useNavigate()
@@ -12,13 +15,97 @@ const WriteMedicine = () => {
     const [memo, setMemo] = useState("")
     const today = new Date().toISOString().split(" ")[0];
 
-    const [medicines, setMedicines] = useState([
-        { name: "타이레놀", schedule: "매일 식후 30분" },
-        { name: "베이글", schedule: "매일 오후 12:00" },
-        { name: "베이글", schedule: "매일 오후 12:00" },
-        { name: "베이글", schedule: "매일 오후 12:00" },
-        { name: "베이글", schedule: "매일 오후 12:00" },
-    ])
+    const location = useLocation()
+    const [medicines, setMedicines] = useState<Pill[]>([])
+
+    const { user } = useAuthStore();
+
+
+    useEffect(() => {
+        const selected: Pill | undefined = location.state?.selectedMedicine
+        const shouldPreserveState = location.state?.preserveState
+        const restoreFormData = location.state?.restoreFormData
+
+        if (restoreFormData) {
+            setDate(restoreFormData.date || "")
+            setTime(restoreFormData.time || "")
+            setHospital(restoreFormData.hospital || "")
+            setMemo(restoreFormData.memo || "")
+            if (restoreFormData.medicines) {
+                setMedicines(restoreFormData.medicines)
+            }
+        }
+
+        if (selected) {
+            setMedicines((prev) => {
+                const alreadyExists = prev.some((item) => item.medi_id === selected.medi_id)
+                if (alreadyExists) return prev
+                return [...prev, selected]
+            })
+
+            if (shouldPreserveState) {
+                navigate("/writemedicine", { replace: true, state: null })
+            }
+        }
+    }, [location.state, navigate])
+
+
+    const handleSave = async () => {
+        if (!date || !time || !hospital || !memo) {
+            alert("모든 필드를 입력해 주세요.");
+            return;
+        }
+
+        if (!user) {
+            alert("로그인이 필요합니다.");
+            return;
+        }
+
+        if (medicines.length === 0) {
+            alert("약을 한 개 이상 추가해 주세요.");
+            return;
+        }
+
+        const datetime = new Date(`${date}T${time}`).toISOString();
+
+        try {
+            for (const medicine of medicines) {
+                const requestBody = {
+                    user,
+                    disease: user.disease ?? {
+                        disease_id: 0,
+                        disease_name_kr: "기본질환",
+                        disease_name_en: "default"
+                    },
+                    cycle: {
+                        cycle_id: medicine.cycle_id || 0,
+                        cycle_string: medicine.schedule || "하루 1회",
+                        medicine: {
+                            medi_id: medicine.medi_id,
+                            name: medicine.name,
+                            explaination: medicine.explaination,
+                        }
+                    },
+                    mr_time: datetime,
+                    mr_hospital: hospital,
+                    memo
+                };
+
+                // ✅ 전송 전에 console.log로 확인
+                console.log("📦 보내는 데이터:", requestBody);
+
+                await api.post("/mr", requestBody);
+            }
+
+            alert("모든 약 정보가 저장되었습니다.");
+            navigate("/record");
+        } catch (err) {
+            console.error("❌ 저장 실패!", err);
+            alert("저장에 실패했습니다. 콘솔을 확인해 주세요.");
+        }
+    };
+
+
 
     return (
         <div className="flex flex-col h-screen">
@@ -51,7 +138,11 @@ const WriteMedicine = () => {
                         <span className="font-medium">약</span>
                         <span
                             className="font-semibold text-blue-400 cursor-pointer"
-                            onClick={() => navigate('/medicinesearch')}
+                            onClick={() => navigate('/medicinesearch', {
+                                state: {
+                                    currentFormData: { date, time, hospital, memo, medicines }
+                                }
+                            })}
                         >
                             + 추가하기
                         </span>
@@ -61,7 +152,8 @@ const WriteMedicine = () => {
                         <MedicineItem
                             key={idx}
                             name={med.name}
-                            schedule={med.schedule}
+                            explaination={med.schedule || med.explaination}
+                            onRemove={() => setMedicines((prev) => prev.filter((_, i) => i !== idx))}
                         />
                     ))}
                 </div>
@@ -90,9 +182,7 @@ const WriteMedicine = () => {
                 <TextButton
                     text="저장"
                     variant="primary"
-                    onClick={() => {
-                        // 저장 로직 작성
-                    }}
+                    onClick={handleSave}
                 />
             </div>
         </div>
