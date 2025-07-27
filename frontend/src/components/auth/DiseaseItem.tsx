@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
-import { useAuthStore } from "../../storages/useAuthStorage";
 import type { Disease } from "../../types/user";
+import { useSignupStore } from "../../storages/useSignupStorage";
 
 interface DiseaseItemProps {
   disease: Disease;
@@ -8,12 +8,12 @@ interface DiseaseItemProps {
 }
 
 export default function DiseaseItem({ disease, disabled = false }: DiseaseItemProps) {
-  const { setDisease: setDiseaseId } = useAuthStore();
+  const { setDisease } = useSignupStore();
   const navigate = useNavigate();
 
   const onClick = () => {
     if (disabled) return;
-    setDiseaseId(disease);
+    setDisease(disease);
     navigate(-1);
   };
 

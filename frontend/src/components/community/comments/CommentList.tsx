@@ -1,22 +1,24 @@
 // import { useNavigate } from "react-router-dom";
-import type { CommentInfo } from "../../../types/posts";
+import type { CommentInfo, PostInfo } from "../../../types/posts";
 import Comment from "./Comment";
 import CommentInput from "./CommentTextBox";
 
 export interface CommentListProps {
   commentList: CommentInfo[];
+  post: PostInfo | null;
+  onNewComment: () => void;
 }
 
-function CommentList({ commentList }: CommentListProps) {
+function CommentList({ commentList, post, onNewComment }: CommentListProps) {
   return (
     <section className="flex flex-col w-full">
-      {commentList.map((comment) => (
+      {post && commentList.map((comment) => (
         <Comment
-          key={comment.commentId}
+          key={comment.comment_id}
           comment={comment}
         />
       ))}
-      <CommentInput />
+      <CommentInput post={post} refreshComment={onNewComment} />
     </section>
   );
 }

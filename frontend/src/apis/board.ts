@@ -1,4 +1,4 @@
-import type { category, CommentInfo, PostInfo } from "../types/posts";
+import type { category, CommentInfo, CommentPost, PostInfo } from "../types/posts";
 import api from "./axios";
 
 export const boardsByCategory = async (category: category): Promise<PostInfo[]> => {
@@ -21,12 +21,17 @@ export const sendLike = async (userId: number, boardId: number): Promise<PostInf
     return response.data;
 };
 
-export const sendComment = async (comment: CommentInfo): Promise<PostInfo> => {
+export const getLikeCount = async (boardId: number): Promise<number> => {
+    const response = await api.get<number>(`/likes/count/${boardId}`);
+    return response.data;
+};
+
+export const sendComment = async (comment: CommentPost): Promise<PostInfo> => {
     const response = await api.post<PostInfo>(`/comments`, comment);
     return response.data;
 };
 
 export const getCommentsById = async (id: number): Promise<CommentInfo[]> => {
-    const response = await api.post<CommentInfo[]>(`/comments/board/${id}`);
+    const response = await api.get<CommentInfo[]>(`/comments/board/${id}`);
     return response.data;
 };

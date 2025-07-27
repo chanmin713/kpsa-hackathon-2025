@@ -50,7 +50,6 @@ export default function Banner() {
         </div>
       </div>
 
-      {/* 모달 */}
       {showModal && (
         <Modal onClose={handleModalClose}>
           <div className="text-center">

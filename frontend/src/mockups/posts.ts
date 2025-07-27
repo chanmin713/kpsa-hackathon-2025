@@ -95,7 +95,7 @@ export const postList: PostInfo[] = [
 
 export const commentList: CommentInfo[] = [
   {
-    commentId: 1,
+    comment_id: 1,
     content: "헐~~ 지존 짱이네요",
     user: {
       user_id: 4,
@@ -122,7 +122,7 @@ export const commentList: CommentInfo[] = [
     }
   },
   {
-    commentId: 2,
+    comment_id: 2,
     content: "기분 좋은 글이네요. 장미 한 송이 두고 갑니다. 총총\n@>----",
     user: {
       user_id: 6,

@@ -7,6 +7,9 @@ import SettingButton from "../../components/mypage/buttons/SettingButton";
 // import { useNavigate } from "react-router-dom";
 import type { IconListItemProps } from "../../components/mypage/accordion/IconListItem";
 import IconList from "../../components/mypage/accordion/IconList";
+import Modal from "../../components/common/Modal";
+import Button from "../../components/buttons/Button";
+import { useState } from "react";
 
 interface AccordionDataItem {
   title: string;
@@ -15,74 +18,79 @@ interface AccordionDataItem {
 
 function Home() {
     // const navigate = useNavigate();
+    const [showModal, setShowModal] = useState(false);
+
+    const handleModalOpen = () => {
+    setShowModal(true);
+    };
+
+    const handleModalClose = () => {
+    setShowModal(false);
+    };
 
     const infoMenu: IconListItemProps[] = [
         {
             icon: MessageCircleReply,
             title: "내 댓글",
-            onClick: () => alert("내 댓글")
+            onClick: handleModalOpen
         },
         {
             icon: Heart,
             title: "좋아요",
-            onClick: () => alert("좋아요")
+            onClick: handleModalOpen
         },
         {
             icon: Scroll,
             title: "스크랩",
-            onClick: () => alert("스크랩")
+            onClick: handleModalOpen
         }
     ]
-
     const communityMenu: IconListItemProps[] = [
         {
             icon: Pen,
             title: "내 글",
-            onClick: () => alert("내 글")
+            onClick: handleModalOpen
         },
         {
             icon: MessageCircleReply,
             title: "내 댓글",
-            onClick: () => alert("내 댓글")
+            onClick: handleModalOpen
         },
         {
             icon: Heart,
             title: "좋아요",
-            onClick: () => alert("좋아요")
+            onClick: handleModalOpen
         }
     ]
-
     const recordMenu: IconListItemProps[] = [
         {
             icon: File,
             title: "PDF 다운로드",
-            onClick: () => alert("PDF 다운로드")
+            onClick: handleModalOpen
         },
         {
             icon: LayoutDashboard,
             title: "대시보드",
-            onClick: () => alert("대시보드")
+            onClick: handleModalOpen
         },
         {
             icon: Pill,
             title: "처방",
-            onClick: () => alert("처방")
+            onClick: handleModalOpen
         }
     ]
-
     const extraMenu: IconListItemProps[] = [
         {
             icon: Speaker,
             title: "공지사항",
-            onClick: () => alert("공지사항")
+            onClick: handleModalOpen
         },
         {
             icon: MailQuestion,
             title: "문의 및 의견",
-            onClick: () => alert("문의 및 의견")
+            onClick: handleModalOpen
         }
     ]
-
     const menus: AccordionDataItem[] = [
         {
             title: "정보",
@@ -117,6 +125,17 @@ function Home() {
                 <AccordionList items={menus} />
             </div>
             <BottomNavigation />
+
+            {showModal && (
+                <Modal onClose={handleModalClose}>
+                <div className="text-center">
+                    <p className="text-lg font-semibold mb-4">더 많은 기능을 기대해 주세요.</p>
+                    <Button onClick={handleModalClose}>
+                        <span>확인</span>
+                    </Button>
+                </div>
+                </Modal>
+            )}
         </div>
     );
 }

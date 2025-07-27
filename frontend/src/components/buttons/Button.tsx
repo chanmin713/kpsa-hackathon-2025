@@ -6,7 +6,7 @@ export interface ButtonProps {
 
 export default function Button(props: ButtonProps) {
     return (
-        <button onClick={props.onClick} disabled={props.disabled}>
+        <button onClick={props.onClick} disabled={props.disabled} className="text-main">
             {props.children}
         </button>
     )

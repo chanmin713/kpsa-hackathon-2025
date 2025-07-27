@@ -12,8 +12,18 @@ export type PostInfo = {
 }
 
 export type CommentInfo = {
-  commentId: number;
+  comment_id: number;
   content: string;
   user: User;
   board: PostInfo;
+}
+
+export type CommentPost = {
+  content: string;
+  user: {
+    user_id: number;
+  }
+  board: {
+    board_id: number;
+  }
 }
